@@ -16,35 +16,28 @@ def zenit_polar(my_str: str) -> str:
 def arq_zp(arq: str) -> str:
     with open(arq, 'r') as arq:
         msg = arq.read()
-    print(msg)
-    print('---------')
+    print('\n---------------------------------------\n')
     msg = zenit_polar(msg)
     print(msg)
 
-def term_zp(argc: int, argv: list[str]) -> int:
-    line = ''
+def term_zp() -> None: 
     my_str = ''
-    if argc < 2:
-        count = 0
-        print("Digite o texto.\n")
-        while True:
-            line = input()
-            if line == '':
-                count += 1
-            else:
-                count = 0
-            if count == 2:
-                break
-            my_str += line + '\n'
-    elif argc == 2:
-        my_str += argv[1] + '\n'
-    else:
-        sys.stderr.write("Insira apenas um argumento.\n")
+    count = 0
 
-    print('----------------\n')
+    print("Digite o texto.\n")
+    while True:
+        line = input()
+        if line == '':
+            count += 1
+        else:
+            count = 0
+        if count == 2:
+            break
+        my_str += line + '\n'
+
+    print('----------------------------------------\n')
     my_str = zenit_polar(my_str)
     print(my_str, end='')
-    return (0)
 
 def main_header() -> str:
     string = '''
@@ -75,6 +68,6 @@ if __name__ == "__main__":
             except(FileNotFoundError):
                 print(f'O arquivo {option} não foi encontrado.')
         elif (option == '1'):
-           term_zp(argc, argv) 
+           term_zp() 
     else:
         print('Por favor insira apenas um ou nenhum argumento.')
