@@ -37,8 +37,8 @@ def ft_menu() -> str:
 def ft_constructor_path(path_main: str) -> str:
     option = ft_menu()
     if option == '1':
-        if os.path.isdir(os.path.join(path_main, 'Desktop')):
-            print('Desk')
+        if tmp := os.path.isdir(os.path.join(path_main, 'Desktop')):
+            return(tmp)
         else:
             path_main = os.path.join(path_main, 'Área de trabalho')
             if (os.path.isdir(path_main)):
@@ -74,7 +74,7 @@ def main() -> int:
     path_main = ft_constructor_path(path_main)
     print(f'O path_main é: {path_main}')
 
-    target_string = os.listdir(path_main)
+#    target_string = os.listdir(path_main)
 #    print(target_string)
 
 #    for target in target_string:
