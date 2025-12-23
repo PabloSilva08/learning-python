@@ -22,7 +22,10 @@ if __name__ == '__main__':
     letras_certas: list[str] = []
     letras_erradas: list[str] = []
 
-    texto_secreto: str = "Pablo Vieira".lower()
+    texto_secreto: str = input("Digite o texto secreto: ").lower()
+    os.system('clear')
+    if (len(texto_secreto) < 2):
+        texto_secreto = "Pablo Vieira".lower()
     ver: bool = True
     count: int = 0
     texto_oculto: str = ""
@@ -55,6 +58,4 @@ if __name__ == '__main__':
         if texto_oculto == texto_secreto:
             finaly(texto_oculto, count)
             break
-    
     print('FIM')
-    
