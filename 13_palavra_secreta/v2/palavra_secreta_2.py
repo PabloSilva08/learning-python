@@ -1,7 +1,7 @@
 import os
 from color_format import *
 
-def char_revealed(texto_secreto: str, letras_certas: str) -> str:
+def char_revealed(texto_secreto: str, letras_certas: list[str]) -> str:
     t_oculto: str = ""
     for ts in texto_secreto:
         if ts in letras_certas:
@@ -10,7 +10,7 @@ def char_revealed(texto_secreto: str, letras_certas: str) -> str:
             t_oculto += '*'
     return(t_oculto)
 
-def declaration(texto_oculto: str, letras_erradas: str) -> None:
+def declaration(texto_oculto: str, letras_erradas: list[str]) -> None:
     print(f'{BOLDRED}Letras erradas = {letras_erradas}{RESET}')
     print(texto_oculto)
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
                 finaly(texto_oculto, count)
                 break
             else:
-                count = len(caracter * 2)
+                count = len(caracter) * 2
                 continue
         if caracter in  letras_totais:
             declaration(texto_oculto, letras_erradas)

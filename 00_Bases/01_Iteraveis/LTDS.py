@@ -20,7 +20,7 @@ L3 = L1 + L2
 
 print(f'L1 => ',L1)
 print(f'L2 => ',L2)
-print(f'L3 => ',L3)
+print(f'L3 = L1 + L2 => ',L3)
 
 "slicing"
 print('\n----Slicing----\n')
