@@ -83,9 +83,11 @@ if __name__ == '__main__':
         if len_cpf == 14:
             cpf = simplified_cpf(cpf)
         digit_10: int = calculating_the_tenth(cpf)
-        print(digit_10)
         digit_11: int = calculating_the_eleventh(cpf)
-        print(digit_11)
-#        print("O cpf simplioficado é ", cpf)
     else:
         print("O cpf não cumpre os pre-requisitos básicos.")
+    last_digits = str(digit_10 * 10 + digit_11)
+    if (cpf[0] * 11 != cpf) and (cpf[9:] == last_digits):
+        print(f'The CPF {cpf} is valid.')
+    else:
+        print(f'The CPF {cpf} is NOT valid.')
