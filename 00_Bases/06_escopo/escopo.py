@@ -1,22 +1,38 @@
 x = 1
+y = 2
+z = 3
 
-print("01 - Valor x = ", x)
 def escopo():
     global x
     x = 10
-    print("11 - Valor x = ", x)
-
-
-    def outra_funcao():
-        global x
-#        print("21 - Valor x = ", x)
-        x = 11
-        print("22 - Valor x = ", x)
-
+    y = 20
+    print("----Antes----")
+    print("escopo --> x = ", x, "ID => ", id(x))
+    print("escopo --> y = ", y, "ID => ", id(y))
+    print("escopo --> z = ", z, "ID => ", id(z))
     outra_funcao()
-    print("12 - Valor x = ", x)
+    print("----Depois----")
+    print("escopo --> x = ", x, "ID => ", id(x))
+    print("escopo --> y = ", y, "ID => ", id(y))
+    print("escopo --> z = ", z, "ID => ", id(z))
 
-print("02 - Valor x = ", x)
 
+def outra_funcao():
+    global y 
+    x = 100
+    y = 200 
+    print("--------Dentro de outra funcao--------")
+    print("outra funcao --> x = ", x, "ID => ", id(x))
+    print("outra funcao --> y = ", y, "ID => ", id(y))
+    print("outra funcao --> z = ", z, "ID => ", id(z))
+    print("--------Dentro de outra funcao--------")
+
+print("Fora de tudo --> x = ", x, "ID => ", id(x))
+print("Fora de tudo --> y = ", y, "ID => ", id(y))
+print("Fora de tudo --> z = ", z, "ID => ", id(z))
+print("-------------------")
 escopo()
-print("03 - Valor x = ", x)
+print("-------------------")
+print("Fora de tudo --> x = ", x, "ID => ", id(x))
+print("Fora de tudo --> y = ", y, "ID => ", id(y))
+print("Fora de tudo --> z = ", z, "ID => ", id(z))
