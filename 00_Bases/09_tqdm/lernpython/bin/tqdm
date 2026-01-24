@@ -1,0 +1,8 @@
+#!/home/pablo/Pdrive_01/06_curso_em_andamento/11_learning-python/00_Bases/09_tqdm/lernpython/bin/python
+# -*- coding: utf-8 -*-
+import re
+import sys
+from tqdm.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
