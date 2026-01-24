@@ -1,8 +1,10 @@
-from tqdm import tqdm
-import time
+class PTqdm:
+    def __init__(self, iterable):
+        self._iterable = iterable
 
-frase = "Pablo Vieira Carvalho Silva"
+    def __iter__(self):
+        for i in self._iterable:
+            yield i
 
-for letra in tqdm(frase):
-    print(letra)
-    time.sleep(1)
+    def __str__()
+
