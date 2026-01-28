@@ -7,21 +7,27 @@ def starting() -> str:
     item: str = input("Digite uma tarefa ou comando: ").upper()
     return(item)
 
-def listar(lista=None) -> None:
+def listar(lista: list [str] = None) -> None:
     if lista == None:
         lista = []
-        print("\nNão existe tarefas.")
     print("\n\nTAREFAS:\n")
     for item in lista:
         print(f'- {item}')
+    if not lista:
+        print("\nNão existe tarefas.")
 
-def additem(item: str, lista=None) -> list[str]:
+def additem(item: str, lista: list[str] = None) -> list[str]:
     if lista == None:
         lista = []
+    item = item.strip()
+    if item == '':
+        print("\nVocë nao digitou nenhuma tarefa.")
+        return(lista)
     lista.append(item)
+    print(f'\nA tarefa {item} foi adicionada.')
     return(lista)
 
-def undo_list(lista=None, pilha=None) -> list[str]:
+def undo_list(lista: list[str] = None, pilha: list[str] = None) -> list[str]:
     if lista == None:
         lista = []
     if pilha == None:
@@ -29,20 +35,25 @@ def undo_list(lista=None, pilha=None) -> list[str]:
 
     if lista:
         pilha.append(lista[-1])
+        print(f'\nA tarefa {lista[-1]} foi desfeita.')
         del lista[-1]
     else:
         print("\nSua lista está vazia.")
 
     return (lista)
 
-def redo_list(lista=None, pilha=None) -> list[str]:
+def redo_list(lista: list[str] = None, pilha: list[str] = None) -> list[str]:
     if lista == None:
         lista = []
     if pilha == None:
         pilha = []
     
+    if not pilha:
+        print("\nNão existe tarefas para refazer.")
+
     if pilha:
         lista.append(pilha[-1])
+        print(f'\nA tarefa {lista[-1]} foi refeita.')
         del pilha[-1]
     
     return (lista)
