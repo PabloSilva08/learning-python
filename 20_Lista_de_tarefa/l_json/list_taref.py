@@ -1,11 +1,12 @@
 import os
+import json 
 
 funfar: bool = True
 
 
 def starting() -> str:
     print("\nComandos: listar, desfazer, refazer, exit")
-    item: str = input("Digite uma tarefa ou comando: ").upper()
+    item: str = input("Digite uma tarefa ou comando: ")
     return (item)
 
 
@@ -16,7 +17,7 @@ def listar(lista: list[str] = None) -> None:
     for item in lista:
         print(f'- {item}')
     if not lista:
-        print("\nNão existe tarefas.")
+        print("Não existe tarefas.")
 
 
 def additem(item: str, lista: list[str] = None) -> list[str]:
@@ -62,20 +63,45 @@ def redo_list(lista: list[str] = None, pilha: list[str] = None) -> list[str]:
     return (lista)
 
 
+def json_file_save(lista: list[str]) -> None:
+    if not lista:
+        print("\nLista em branco, nada a salvar.\n")
+        return
+    with open('dados.json', 'w') as f_json:
+        json.dump(lista, f_json, indent=4)
+        print("\nLista salva com sucesso.\n")
+
+
+def json_file_read(lista: list[str]) -> list[str]:
+    lista_carregfada: list[str] = []
+    try:
+        with open('dados.json', 'r') as f_json:
+            lista_carregada = json.load(f_json)
+            print("\nLista carregada com sucesso.\n")
+            return (lista_carregada)
+    except FileNotFoundError:
+        print("\nArquivo não encontrado.")
+        return (lista)
+
+
 lista = []
 pilha = []
 while funfar:
     item = starting()
 
-    if item == "LISTAR":
+    if item == "listar":
         listar(lista)
-    elif item == "DESFAZER":
+    elif item == "desfazer":
         lista = undo_list(lista, pilha)
-    elif item == "REFAZER":
+    elif item == "refazer":
         lista = redo_list(lista, pilha)
-    elif item == "EXIT":
+    elif item == "save":
+        json_file_save(lista)
+    elif item == "read":
+        lista = json_file_read(lista)
+    elif item == "exit":
         funfar = False
-    elif item == "CLEAR":
+    elif item == "clear":
         os.system('clear')
     else:
         lista = additem(item, lista)
