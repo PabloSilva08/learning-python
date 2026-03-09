@@ -1,4 +1,5 @@
 # O range é considerado preguiçoso por que ele nao gera de uma vez todos os elementos da sequencia na memoria.
+
 #Ex_01 
 print('Exercício 01')
 print(len(range(5)), '\n')
